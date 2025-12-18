@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Opponent" load_steps=2 format=3 uid="uid://bar0rjhj56ukw"]
+
+[ext_resource type="Script" path="res://Script/Opponent.gd" id="1_wdvde"]
+
+[resource]
+script = ExtResource("1_wdvde")
+opponent_name = ""
+number_phase = 1
+reaction_time = 3.0
+delay = 0
+time_remaining = 7.0
