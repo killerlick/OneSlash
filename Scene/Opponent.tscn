@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://fial675cu8gf"]
+
+[ext_resource type="Script" path="res://Script/opponent.gd" id="1_k3ai7"]
+
+[node name="Opponent" type="Node2D"]
+script = ExtResource("1_k3ai7")
+
+[node name="Timer_for_attacking" type="Timer" parent="."]
+one_shot = true
+
+[node name="Reaction_time" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[connection signal="timeout" from="Timer_for_attacking" to="." method="_on_timer_for_attacking_timeout"]
+[connection signal="timeout" from="Reaction_time" to="." method="_on_reaction_time_timeout"]

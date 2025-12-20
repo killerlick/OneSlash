@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://ywi4ia4sv7fv"]
+
+[ext_resource type="PackedScene" uid="uid://b7k4f6q76pqlo" path="res://Scene/GameManager.tscn" id="1_1pcg4"]
+[ext_resource type="PackedScene" uid="uid://fial675cu8gf" path="res://Scene/Opponent.tscn" id="2_orqde"]
+[ext_resource type="Resource" uid="uid://djmeu20vcvcjv" path="res://Opponent/lambda.tres" id="3_kw5gt"]
+
+[node name="BaseLevelKit" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_1pcg4")]
+
+[node name="Opponent" parent="." instance=ExtResource("2_orqde")]
+position = Vector2(981, 205)
+opponent = ExtResource("3_kw5gt")
+
+[connection signal="attacking" from="Opponent" to="GameManager" method="_on_opponent_attacking"]

@@ -1,10 +1,55 @@
-extends Resource
-class_name Opponent
+extends Node2D
 
-@export var sprite2D :Texture2D;
-@export var opponent_name :String;
+signal attacking
 
-@export var number_phase = 1 ;
-@export var reaction_time : float = 3.0;
-@export var delay= 0;
-@export var time_remaining : float = 7.0;
+
+
+var state : Global.Opponent_state ;
+
+@export var opponent : Opponent ;
+
+@onready var timer_for_attacking : Timer = $Timer_for_attacking
+@onready var reaction_time     : Timer = $Reaction_time
+
+@onready var sprite : Sprite2D = $Sprite2D
+
+
+
+func _ready() -> void:
+	if(opponent == null):
+		print('pas d\'opponent assigner ')
+		return
+	if(opponent.sprite2D != null):
+		sprite.texture = opponent.sprite2D
+	state = Global.Opponent_state.NOT_READY
+	reaction_time.set_wait_time(opponent.nb_reaction_time) 
+
+func waiting_time() -> void:
+	var randomGenerator = RandomNumberGenerator.new()
+	var action_time = randomGenerator.randf()*opponent.nb_time_remaining + opponent.nb_delay
+	timer_for_attacking.set_wait_time(action_time)
+	state = Global.Opponent_state.PREPARING
+	timer_for_attacking.start()
+
+
+
+func _on_timer_for_attacking_timeout() -> void:
+	print("l'ennemi va attaquer")
+	state = Global.Opponent_state.DEGAINING
+	reaction_time.start() 
+
+
+func _on_reaction_time_timeout() -> void:
+	print("il a attaqué")
+	attacking.emit()
+
+func restart_all():
+	timer_for_attacking.stop()
+	reaction_time.stop()
+	reaction_time.set_wait_time(opponent.nb_reaction_time)
+	state = Global.Opponent_state.NOT_READY
+
+
+func stop_all():
+	timer_for_attacking.stop()
+	reaction_time.stop()

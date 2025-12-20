@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Opponent" load_steps=2 format=3 uid="uid://bar0rjhj56ukw"]
+[gd_resource type="Resource" script_class="Opponent" load_steps=3 format=3 uid="uid://djmeu20vcvcjv"]
 
-[ext_resource type="Script" path="res://Script/Opponent.gd" id="1_wdvde"]
+[ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="1_mnrbq"]
+[ext_resource type="Texture2D" uid="uid://dwsqkqv3j15d3" path="res://icon.svg" id="2_fvm5s"]
 
 [resource]
-script = ExtResource("1_wdvde")
-opponent_name = ""
+script = ExtResource("1_mnrbq")
+opponent_name = "lambda"
+sprite2D = ExtResource("2_fvm5s")
 number_phase = 1
-reaction_time = 3.0
-delay = 0
-time_remaining = 7.0
+nb_reaction_time = 3.0
+nb_delay = 2.0
+nb_time_remaining = 7.0

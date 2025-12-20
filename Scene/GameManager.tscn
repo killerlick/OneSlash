@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7k4f6q76pqlo"]
+
+[ext_resource type="Script" path="res://Script/game_manager.gd" id="1_ftvda"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_ftvda")
+
+[node name="Match_start" type="Timer" parent="."]
+wait_time = 3.035
+one_shot = true
+
+[connection signal="timeout" from="Match_start" to="." method="_on_match_start_timeout"]
