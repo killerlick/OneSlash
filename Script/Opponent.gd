@@ -1,6 +1,7 @@
 extends Node2D
 
 signal attacking
+signal will_attack
 
 
 
@@ -32,16 +33,23 @@ func waiting_time() -> void:
 	timer_for_attacking.start()
 
 
-
+# l'instant ou l'ennemi va attaquer et que le joueur va slash
 func _on_timer_for_attacking_timeout() -> void:
 	print("l'ennemi va attaquer")
+	will_attack.emit()
 	state = Global.Opponent_state.DEGAINING
 	reaction_time.start() 
 
 
+
+
+ # emet le signal comme quoi l'ennemi a attaquer
 func _on_reaction_time_timeout() -> void:
 	print("il a attaqué")
 	attacking.emit()
+
+
+
 
 func restart_all():
 	timer_for_attacking.stop()

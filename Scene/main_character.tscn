@@ -3,6 +3,105 @@
 [ext_resource type="Script" path="res://Script/main_character.gd" id="1_gro7q"]
 [ext_resource type="Texture2D" uid="uid://de2fvot4t2xud" path="res://main_character.png" id="2_ujbqj"]
 
+[sub_resource type="Animation" id="Animation_33ojy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 559)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missed:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(208, -0.176, 0, 0.176, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missed:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(19, -0.176, 0, 0.176, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Missed:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jldyp"]
+resource_name = "missed"
+length = 0.352
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 559), Vector2(148, 559), Vector2(128, 559), Vector2(108, 559), Vector2(128, 559), Vector2(148, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Missed:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(108, -0.176, 0, 0.176, 0, 176, -0.176, 0, 0.176, 0, 258, -0.176, 0, 0.176, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.352)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Missed:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-161, -0.176, 0, 0.176, 0, -183, -0.176, 0, 0.176, 0, -129, -0.176, 0, 0.176, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.352)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Missed:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.352),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_jjwd0"]
 resource_name = "slash"
 length = 0.298
@@ -17,37 +116,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(128, 559), Vector2(207, 517), Vector2(128, 559)]
-}
-
-[sub_resource type="Animation" id="Animation_jldyp"]
-resource_name = "missed"
-length = 0.2155
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(128, 559), Vector2(148, 559), Vector2(128, 559), Vector2(108, 559), Vector2(128, 559), Vector2(148, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559)]
-}
-
-[sub_resource type="Animation" id="Animation_33ojy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(128, 559)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y6gbj"]
@@ -68,3 +136,30 @@ texture = ExtResource("2_ujbqj")
 libraries = {
 "": SubResource("AnimationLibrary_y6gbj")
 }
+
+[node name="Missed" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 258.0
+offset_top = -129.0
+offset_right = 316.0
+offset_bottom = -106.0
+text = "MISSED"
+
+[node name="Not_sure" type="Label" parent="."]
+visible = false
+offset_left = 109.0
+offset_top = -193.0
+offset_right = 149.0
+offset_bottom = -120.0
+theme_override_font_sizes/font_size = 53
+text = "?"
+horizontal_alignment = 1
+
+[node name="Sure" type="Label" parent="."]
+visible = false
+offset_left = 110.0
+offset_top = -193.0
+offset_right = 154.0
+offset_bottom = -120.0
+theme_override_font_sizes/font_size = 53
+text = "!!!"

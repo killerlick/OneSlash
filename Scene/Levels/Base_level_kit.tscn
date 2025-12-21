@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ywi4ia4sv7fv"]
+[gd_scene load_steps=6 format=3 uid="uid://ywi4ia4sv7fv"]
 
 [ext_resource type="PackedScene" uid="uid://b7k4f6q76pqlo" path="res://Scene/GameManager.tscn" id="1_1pcg4"]
 [ext_resource type="PackedScene" uid="uid://fial675cu8gf" path="res://Scene/Opponent.tscn" id="2_orqde"]
 [ext_resource type="Resource" uid="uid://djmeu20vcvcjv" path="res://Opponent/lambda.tres" id="3_kw5gt"]
+[ext_resource type="PackedScene" uid="uid://b1g8yxp2j6lrb" path="res://Scene/main_character.tscn" id="4_ngjj0"]
+[ext_resource type="PackedScene" uid="uid://nsy377c3n3a2" path="res://Scene/HUD.tscn" id="5_0vchc"]
 
 [node name="BaseLevelKit" type="Node2D"]
 
@@ -12,4 +14,9 @@
 position = Vector2(981, 205)
 opponent = ExtResource("3_kw5gt")
 
+[node name="MainCharacter" parent="." instance=ExtResource("4_ngjj0")]
+
+[node name="Hud" parent="." instance=ExtResource("5_0vchc")]
+
 [connection signal="attacking" from="Opponent" to="GameManager" method="_on_opponent_attacking"]
+[connection signal="will_attack" from="Opponent" to="GameManager" method="_on_opponent_will_attack"]

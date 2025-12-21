@@ -98,6 +98,7 @@ _data = {
 script = ExtResource("1_4dxal")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -106,6 +107,7 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_noidn")
 
 [node name="Decompte" type="Label" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
