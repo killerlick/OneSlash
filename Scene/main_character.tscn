@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1g8yxp2j6lrb"]
+
+[ext_resource type="Script" path="res://Script/main_character.gd" id="1_gro7q"]
+[ext_resource type="Texture2D" uid="uid://de2fvot4t2xud" path="res://main_character.png" id="2_ujbqj"]
+
+[sub_resource type="Animation" id="Animation_jjwd0"]
+resource_name = "slash"
+length = 0.298
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 559), Vector2(207, 517), Vector2(128, 559)]
+}
+
+[sub_resource type="Animation" id="Animation_jldyp"]
+resource_name = "missed"
+length = 0.2155
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.266667, 0.333333, 0.4, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(128, 559), Vector2(148, 559), Vector2(128, 559), Vector2(108, 559), Vector2(128, 559), Vector2(148, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559), Vector2(128, 559)]
+}
+
+[sub_resource type="Animation" id="Animation_33ojy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 559)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6gbj"]
+_data = {
+"RESET": SubResource("Animation_33ojy"),
+"missed": SubResource("Animation_jldyp"),
+"slash": SubResource("Animation_jjwd0")
+}
+
+[node name="MainCharacter" type="Node2D"]
+position = Vector2(128, 559)
+script = ExtResource("1_gro7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ujbqj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y6gbj")
+}

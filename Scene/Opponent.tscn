@@ -13,5 +13,7 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
 [connection signal="timeout" from="Timer_for_attacking" to="." method="_on_timer_for_attacking_timeout"]
 [connection signal="timeout" from="Reaction_time" to="." method="_on_reaction_time_timeout"]
