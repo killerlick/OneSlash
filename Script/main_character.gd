@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main_character
 
 @onready var animation = $AnimationPlayer
 @onready var not_sure = $Not_sure

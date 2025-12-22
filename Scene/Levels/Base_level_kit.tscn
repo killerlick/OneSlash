@@ -19,4 +19,5 @@ opponent = ExtResource("3_kw5gt")
 [node name="Hud" parent="." instance=ExtResource("5_0vchc")]
 
 [connection signal="attacking" from="Opponent" to="GameManager" method="_on_opponent_attacking"]
+[connection signal="vanished" from="Opponent" to="GameManager" method="_on_opponent_vanished"]
 [connection signal="will_attack" from="Opponent" to="GameManager" method="_on_opponent_will_attack"]
