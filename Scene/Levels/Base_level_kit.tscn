@@ -1,12 +1,79 @@
-[gd_scene load_steps=6 format=3 uid="uid://ywi4ia4sv7fv"]
+[gd_scene load_steps=10 format=3 uid="uid://ywi4ia4sv7fv"]
 
 [ext_resource type="PackedScene" uid="uid://b7k4f6q76pqlo" path="res://Scene/GameManager.tscn" id="1_1pcg4"]
+[ext_resource type="Texture2D" uid="uid://bbt7e1ri8a5s" path="res://krita/base_level_background.png" id="1_rt6bb"]
 [ext_resource type="PackedScene" uid="uid://fial675cu8gf" path="res://Scene/Opponent.tscn" id="2_orqde"]
 [ext_resource type="Resource" uid="uid://djmeu20vcvcjv" path="res://Opponent/lambda.tres" id="3_kw5gt"]
 [ext_resource type="PackedScene" uid="uid://b1g8yxp2j6lrb" path="res://Scene/main_character.tscn" id="4_ngjj0"]
 [ext_resource type="PackedScene" uid="uid://nsy377c3n3a2" path="res://Scene/HUD.tscn" id="5_0vchc"]
 
+[sub_resource type="Animation" id="Animation_wwyar"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCharacter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 559)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Opponent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(981, 205)]
+}
+
+[sub_resource type="Animation" id="Animation_yw1n0"]
+resource_name = "level_begin"
+length = 1.716
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainCharacter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-200, 559), Vector2(128, 559)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Opponent:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1200, 205), Vector2(981, 205)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2v7q"]
+_data = {
+"RESET": SubResource("Animation_wwyar"),
+"level_begin": SubResource("Animation_yw1n0")
+}
+
 [node name="BaseLevelKit" type="Node2D"]
+
+[node name="Sprite2D" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_rt6bb")
 
 [node name="GameManager" parent="." instance=ExtResource("1_1pcg4")]
 
@@ -18,6 +85,12 @@ opponent = ExtResource("3_kw5gt")
 
 [node name="Hud" parent="." instance=ExtResource("5_0vchc")]
 
+[node name="LevelAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s2v7q")
+}
+
 [connection signal="attacking" from="Opponent" to="GameManager" method="_on_opponent_attacking"]
 [connection signal="vanished" from="Opponent" to="GameManager" method="_on_opponent_vanished"]
 [connection signal="will_attack" from="Opponent" to="GameManager" method="_on_opponent_will_attack"]
+[connection signal="animation_finished" from="LevelAnimation" to="GameManager" method="_on_level_animation_animation_finished"]

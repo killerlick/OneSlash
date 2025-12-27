@@ -1,10 +1,12 @@
 extends Node
 
 @onready var match_start : Timer = $Match_start
+@onready var animation_level : AnimationPlayer= $"../LevelAnimation"
+
 
 var opponent :Opponent
 var main_character : Main_character
-var hud
+var hud : HUD
 var dual_begin : bool = false
 
 
@@ -13,6 +15,8 @@ func _ready() -> void:
 	opponent = get_parent().get_node("Opponent")
 	main_character = get_parent().get_node("MainCharacter")
 	hud = get_parent().get_node("Hud")
+	await get_tree().process_frame
+	animation_level.play("level_begin")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -42,6 +46,11 @@ func handle_miss() -> void:
 	if(Global.current_chance == 0):
 		game_over()
 		return
+	else:
+		hud.remove_heart()
+		begin_the_round()
+
+		
 	opponent.restart_all()
 
 #si vous slasher au bon moment
@@ -73,7 +82,7 @@ func _on_opponent_will_attack() -> void:
 	main_character.show_sign("sure") # Replace with function body.
 
 func _on_match_start_timeout() -> void:
-	match_start.set_wait_time(2.0)
+	match_start.set_wait_time(3.0)
 	print("le match commence")
 	opponent.ennemy_start()
 	dual_begin = true # Replace with function body.
@@ -81,3 +90,8 @@ func _on_match_start_timeout() -> void:
 
 func _on_opponent_vanished() -> void:
 	opponent.stop_all()
+
+
+func _on_level_animation_animation_finished(anim_name: StringName) -> void:
+	if(anim_name == "level_begin"):
+		begin_the_round()

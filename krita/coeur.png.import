@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2axm4q8u1g7t"
-path="res://.godot/imported/main_character.jpg-5fa3bf75ccd74973aea40e5c778adff0.ctex"
+uid="uid://c6xv8oce53bte"
+path="res://.godot/imported/coeur.png-aa86bdb0b7c10b043e0712f56bcde674.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://main_character.jpg"
-dest_files=["res://.godot/imported/main_character.jpg-5fa3bf75ccd74973aea40e5c778adff0.ctex"]
+source_file="res://krita/coeur.png"
+dest_files=["res://.godot/imported/coeur.png-aa86bdb0b7c10b043e0712f56bcde674.ctex"]
 
 [params]
 

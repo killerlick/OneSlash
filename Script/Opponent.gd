@@ -62,6 +62,7 @@ func hitted()-> void:
 		vanished.emit()
 	else:
 		state = Global.Opponent_state.PREPARING
+		await get_tree().create_timer(0.1).timeout
 		ennemy_start()
 
 

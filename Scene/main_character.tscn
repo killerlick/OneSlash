@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b1g8yxp2j6lrb"]
 
 [ext_resource type="Script" path="res://Script/main_character.gd" id="1_gro7q"]
-[ext_resource type="Texture2D" uid="uid://de2fvot4t2xud" path="res://main_character.png" id="2_ujbqj"]
+[ext_resource type="Texture2D" uid="uid://de2fvot4t2xud" path="res://krita/main_character.png" id="2_ujbqj"]
 
 [sub_resource type="Animation" id="Animation_33ojy"]
 length = 0.001
@@ -139,10 +139,10 @@ libraries = {
 
 [node name="Missed" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 258.0
-offset_top = -129.0
-offset_right = 316.0
-offset_bottom = -106.0
+offset_left = 208.0
+offset_top = 19.0
+offset_right = 266.0
+offset_bottom = 42.0
 text = "MISSED"
 
 [node name="Not_sure" type="Label" parent="."]
