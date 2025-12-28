@@ -35,7 +35,8 @@ func _input(event: InputEvent) -> void:
 		elif event.pressed and event.button_index == MOUSE_BUTTON_LEFT and opponent.state == Global.Opponent_state.NOT_READY:
 			print("touch some grass , on a pas encore commencé lol")
 		if event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-			begin_the_round()
+			#begin_the_round()
+			pass
 
 
 #commence le round

@@ -19,4 +19,4 @@ func go_next_level():
 		print(path)
 		get_tree().change_scene_to_file(path)
 	else:
-		pass
+		get_tree().change_scene_to_file("res://Scene/Endgame.tscn")
