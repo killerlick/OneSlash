@@ -10,9 +10,9 @@ signal compte_a_rebour_finished
 @onready var health_display : GridContainer = $Health_display
 @onready var health_model = $Health_model
 
-@onready var match_display : VBoxContainer = $Match_display
-@onready var game_over_display : MarginContainer =$Match_display/Game_over_display
-@onready var game_win_display : MarginContainer = $Match_display/Game_win_display
+@onready var match_display  = $Match_display
+@onready var game_over_display  =$Match_display/Game_over_display
+@onready var game_win_display  = $Match_display/Game_win_display
 
 
 # Called when the node enters the scene tree for the first time.

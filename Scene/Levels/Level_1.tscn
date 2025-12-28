@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqqlyggsu3up0"]
 
 [ext_resource type="PackedScene" uid="uid://ywi4ia4sv7fv" path="res://Scene/Levels/Base_level_kit.tscn" id="1_1tuam"]
-[ext_resource type="Resource" uid="uid://djmeu20vcvcjv" path="res://Opponent/lambda.tres" id="2_8134h"]
+[ext_resource type="Resource" uid="uid://usr6qm2gfhpy" path="res://Opponent/dummy.tres" id="2_0inwb"]
 
 [node name="BaseLevelKit" instance=ExtResource("1_1tuam")]
 
@@ -9,4 +9,4 @@
 level = 1
 
 [node name="Opponent" parent="." index="2"]
-opponent = ExtResource("2_8134h")
+opponent = ExtResource("2_0inwb")
