@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://ywi4ia4sv7fv"]
+[gd_scene load_steps=9 format=3 uid="uid://ywi4ia4sv7fv"]
 
 [ext_resource type="PackedScene" uid="uid://b7k4f6q76pqlo" path="res://Scene/GameManager.tscn" id="1_1pcg4"]
 [ext_resource type="Texture2D" uid="uid://bbt7e1ri8a5s" path="res://krita/base_level_background.png" id="1_rt6bb"]
 [ext_resource type="PackedScene" uid="uid://fial675cu8gf" path="res://Scene/Opponent.tscn" id="2_orqde"]
-[ext_resource type="Resource" uid="uid://djmeu20vcvcjv" path="res://Opponent/lambda.tres" id="3_kw5gt"]
 [ext_resource type="PackedScene" uid="uid://b1g8yxp2j6lrb" path="res://Scene/main_character.tscn" id="4_ngjj0"]
 [ext_resource type="PackedScene" uid="uid://nsy377c3n3a2" path="res://Scene/HUD.tscn" id="5_0vchc"]
 
@@ -79,7 +78,6 @@ texture = ExtResource("1_rt6bb")
 
 [node name="Opponent" parent="." instance=ExtResource("2_orqde")]
 position = Vector2(981, 205)
-opponent = ExtResource("3_kw5gt")
 
 [node name="MainCharacter" parent="." instance=ExtResource("4_ngjj0")]
 

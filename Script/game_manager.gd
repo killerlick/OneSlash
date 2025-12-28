@@ -1,5 +1,7 @@
 extends Node
 
+@export var level : int
+
 @onready var match_start : Timer = $Match_start
 @onready var animation_level : AnimationPlayer= $"../LevelAnimation"
 
@@ -15,6 +17,10 @@ func _ready() -> void:
 	opponent = get_parent().get_node("Opponent")
 	main_character = get_parent().get_node("MainCharacter")
 	hud = get_parent().get_node("Hud")
+	var scene_path = get_tree().current_scene.scene_file_path
+	if scene_path.ends_with("1.tscn"):
+		Global.current_chance = Global.CHANCE_NUMBER
+		Global.current_level = 1
 	await get_tree().process_frame
 	animation_level.play("level_begin")
 
@@ -49,8 +55,6 @@ func handle_miss() -> void:
 	else:
 		hud.remove_heart()
 		begin_the_round()
-
-		
 	opponent.restart_all()
 
 #si vous slasher au bon moment
@@ -64,15 +68,17 @@ func handle_success() -> void:
 
 	#condition et fonction de victoire
 func win_game():
-	pass
+	hud.show_winning_dual()
 	
 	
 #situation game over
 func game_over():
+	opponent.stop_all()
+	dual_begin = false
 	print("game over")
-	get_tree().quit()
+	Global.current_chance = Global.CHANCE_NUMBER
+	hud.show_game_over()
 
-	
 	#si vous slasher trop tard et l'ennemi vous attaque
 func _on_opponent_attacking() -> void:
 	handle_miss() # Replace with function body.
@@ -90,6 +96,7 @@ func _on_match_start_timeout() -> void:
 
 func _on_opponent_vanished() -> void:
 	opponent.stop_all()
+	win_game()
 
 
 func _on_level_animation_animation_finished(anim_name: StringName) -> void:

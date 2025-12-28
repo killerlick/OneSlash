@@ -10,11 +10,21 @@ signal compte_a_rebour_finished
 @onready var health_display : GridContainer = $Health_display
 @onready var health_model = $Health_model
 
+@onready var match_display : VBoxContainer = $Match_display
+@onready var game_over_display : MarginContainer =$Match_display/Game_over_display
+@onready var game_win_display : MarginContainer = $Match_display/Game_win_display
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rectangle_blanc.visible = false
 	decompte.visible = false
 	health_model.visible = false
+	
+	match_display.visible = false
+	game_over_display.visible = false
+	game_win_display.visible = false
+
 	display_health()
 
 
@@ -49,4 +59,18 @@ func animation_compte_a_rebour() -> void:
 	animation.play("compte a rebour")
 
 func show_winning_dual():
-	pass
+	match_display.visible = true
+	game_win_display.visible = true
+
+func show_game_over():
+	match_display.visible = true
+	game_over_display.visible = true
+
+func _on_retry_button_up() -> void:
+	get_tree().reload_current_scene()
+
+func _on_main_menu_button_up() -> void:
+	get_tree().change_scene_to_file("res://Scene/main_menu.tscn") # Replace with function body.
+
+func _on_next_button_up() -> void:
+	Global.go_next_level() # Replace with function body.

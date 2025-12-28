@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=3 format=3 uid="uid://b3nxfm7jax8bs"]
+
+[ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="1_dd6dj"]
+[ext_resource type="Texture2D" uid="uid://bvvwgvylknegh" path="res://krita/machine_tennis.png" id="2_rqe83"]
+
+[resource]
+script = ExtResource("1_dd6dj")
+opponent_name = "tennis machine"
+sprite_feint = Array[Texture2D]([])
+sprite_main = ExtResource("2_rqe83")
+number_hit_by_phase = Array[int]([5])
+nb_reaction_time = 1.0
+nb_delay = 1.0
+nb_time_remaining = 10.0
