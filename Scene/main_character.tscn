@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1g8yxp2j6lrb"]
+[gd_scene load_steps=8 format=3 uid="uid://b1g8yxp2j6lrb"]
 
 [ext_resource type="Script" path="res://Script/main_character.gd" id="1_gro7q"]
 [ext_resource type="Texture2D" uid="uid://de2fvot4t2xud" path="res://krita/main_character.png" id="2_ujbqj"]
+[ext_resource type="AudioStream" uid="uid://dieoip5jid5wl" path="res://song/MC_slash.mp3" id="3_s4vgc"]
 
 [sub_resource type="Animation" id="Animation_33ojy"]
 length = 0.001
@@ -163,3 +164,6 @@ offset_right = 154.0
 offset_bottom = -120.0
 theme_override_font_sizes/font_size = 53
 text = "!!!"
+
+[node name="Slash_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s4vgc")

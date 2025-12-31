@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmloanld4l74i"]
+[gd_scene load_steps=9 format=3 uid="uid://bmloanld4l74i"]
 
 [ext_resource type="Script" path="res://Script/main_menu.gd" id="1_5wd6l"]
 [ext_resource type="Texture2D" uid="uid://bdy1auo30lrlw" path="res://krita/background_title.png" id="2_gx1di"]
 [ext_resource type="Texture2D" uid="uid://doojyl24wv2dk" path="res://krita/Image_title.png" id="2_h5pt6"]
+[ext_resource type="AudioStream" uid="uid://qqvk8wf6bvlg" path="res://song/main_menu_music.mp3" id="4_fmtcl"]
 
 [sub_resource type="Animation" id="Animation_som4b"]
 length = 0.001
@@ -129,6 +130,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 51
 text = "EXIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fmtcl")
+volume_db = -3.402
+autoplay = true
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_up"]
