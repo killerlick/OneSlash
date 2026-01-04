@@ -89,6 +89,7 @@ libraries = {
 }
 
 [connection signal="attacking" from="Opponent" to="GameManager" method="_on_opponent_attacking"]
+[connection signal="prepare_next_phase" from="Opponent" to="GameManager" method="_on_opponent_prepare_next_phase"]
 [connection signal="vanished" from="Opponent" to="GameManager" method="_on_opponent_vanished"]
 [connection signal="will_attack" from="Opponent" to="GameManager" method="_on_opponent_will_attack"]
 [connection signal="animation_finished" from="LevelAnimation" to="GameManager" method="_on_level_animation_animation_finished"]

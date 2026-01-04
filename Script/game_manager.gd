@@ -1,16 +1,13 @@
 extends Node
 
 @export var level : int
-
 @onready var match_start : Timer = $Match_start
 @onready var animation_level : AnimationPlayer= $"../LevelAnimation"
 
-
-var opponent :Opponent
+var opponent       : Opponent
 var main_character : Main_character
-var hud : HUD
-var dual_begin : bool = false
-
+var hud            : HUD
+var dual_begin     : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,6 +21,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	animation_level.play("level_begin")
 
+#
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT and dual_begin:
@@ -38,10 +36,11 @@ func _input(event: InputEvent) -> void:
 			#begin_the_round()
 			pass
 
-
 #commence le round
 func begin_the_round() -> void :
 	print("le match commence dans 1 2 3 ...")
+	
+	match_start.set_wait_time(3.0)
 	hud.animation_compte_a_rebour()
 	match_start.start()
 
@@ -58,7 +57,7 @@ func handle_miss() -> void:
 		begin_the_round()
 	opponent.restart_all()
 
-#si vous slasher au bon moment
+#Si vous slasher au bon moment
 func handle_success() -> void:
 	main_character.hide_sign()
 	main_character.slash()
@@ -66,12 +65,10 @@ func handle_success() -> void:
 	dual_begin=true
 	opponent.hitted()
 
-
-	#condition et fonction de victoire
+#condition et fonction de victoire
 func win_game():
 	hud.show_winning_dual()
-	
-	
+
 #situation game over
 func game_over():
 	opponent.stop_all()
@@ -80,26 +77,26 @@ func game_over():
 	Global.current_chance = Global.CHANCE_NUMBER
 	hud.show_game_over()
 
-	#si vous slasher trop tard et l'ennemi vous attaque
+#si vous slasher trop tard et l'ennemi vous attaque
 func _on_opponent_attacking() -> void:
-	handle_miss() # Replace with function body.
+	handle_miss()
 
 #signal recu que l'ennemi va attaquer
 func _on_opponent_will_attack() -> void:
-	main_character.show_sign("sure") # Replace with function body.
+	main_character.show_sign("sure")
 
 func _on_match_start_timeout() -> void:
-	match_start.set_wait_time(3.0)
 	print("le match commence")
-	opponent.ennemy_start()
-	dual_begin = true # Replace with function body.
-
+	opponent.ennemy_start_next_attack()
+	dual_begin = true
 
 func _on_opponent_vanished() -> void:
 	opponent.stop_all()
 	win_game()
 
-
 func _on_level_animation_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "level_begin"):
 		begin_the_round()
+
+func _on_opponent_prepare_next_phase() -> void:
+	begin_the_round()

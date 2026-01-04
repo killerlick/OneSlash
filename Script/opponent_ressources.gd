@@ -1,6 +1,7 @@
 extends Resource
 class_name Opponent_ressources
 
+
 signal cd
 
 @export var opponent_name :String;
@@ -24,6 +25,9 @@ signal cd
 #la durée dans laquel l'ennemi va attaqueé
 @export var nb_time_remaining : float = 7.0;
 
+#la durée dans laquel l'ennemi feinte
+@export var nb_delay_feint : float = 0.2
+
 
 func _ready() -> void:
 	if phase == null :
@@ -31,3 +35,13 @@ func _ready() -> void:
 		test.feint = 0
 		test.hit = number_hit_by_phase[0]
 		phase.append(test)
+
+func get_number_hit(phase_number : int) -> int:
+	return phase[phase_number].hit
+
+func get_number_feint(phase_number : int) -> int:
+	return phase[phase_number].feint
+	
+
+func get_number_phase()-> int :
+	return phase.size()

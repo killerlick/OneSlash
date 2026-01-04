@@ -1,14 +1,27 @@
-[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=3 format=3 uid="uid://usr6qm2gfhpy"]
+[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=6 format=3 uid="uid://usr6qm2gfhpy"]
 
+[ext_resource type="Script" path="res://Script/OpponentPhase.gd" id="1_l45wl"]
 [ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="1_rtobu"]
 [ext_resource type="Texture2D" uid="uid://b0o04vbvppcut" path="res://krita/dummy.png" id="2_m1pfr"]
+
+[sub_resource type="Resource" id="Resource_ikm2j"]
+script = ExtResource("1_l45wl")
+hit = 1
+feint = 0
+
+[sub_resource type="Resource" id="Resource_aufq8"]
+script = ExtResource("1_l45wl")
+hit = 2
+feint = 0
 
 [resource]
 script = ExtResource("1_rtobu")
 opponent_name = "dummy"
 sprite_feint = Array[Texture2D]([])
 sprite_main = ExtResource("2_m1pfr")
+phase = Array[ExtResource("1_l45wl")]([SubResource("Resource_ikm2j"), SubResource("Resource_aufq8")])
 number_hit_by_phase = Array[int]([1])
 nb_reaction_time = 2.0
 nb_delay = 1.0
-nb_time_remaining = 5.0
+nb_time_remaining = 3.0
+nb_delay_feint = 0.2

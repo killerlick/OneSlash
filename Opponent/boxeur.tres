@@ -1,16 +1,22 @@
-[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=4 format=3 uid="uid://bkcepqnso14mg"]
+[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=5 format=3 uid="uid://bkcepqnso14mg"]
 
 [ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="1_k5vsp"]
 [ext_resource type="Script" path="res://Script/OpponentPhase.gd" id="1_prkt7"]
 [ext_resource type="Texture2D" uid="uid://cf4y0uc34l43h" path="res://krita/boxeur.png" id="2_aqoji"]
+
+[sub_resource type="Resource" id="Resource_qs547"]
+script = ExtResource("1_prkt7")
+hit = 6
+feint = 0
 
 [resource]
 script = ExtResource("1_k5vsp")
 opponent_name = "Boxeur"
 sprite_feint = Array[Texture2D]([])
 sprite_main = ExtResource("2_aqoji")
-phaseee = Array[ExtResource("1_prkt7")]([])
+phase = Array[ExtResource("1_prkt7")]([SubResource("Resource_qs547")])
 number_hit_by_phase = Array[int]([6])
 nb_reaction_time = 1.0
 nb_delay = 1.0
-nb_time_remaining = 5.0
+nb_time_remaining = 7.0
+nb_delay_feint = 0.2

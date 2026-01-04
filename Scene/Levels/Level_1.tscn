@@ -9,4 +9,4 @@
 level = 1
 
 [node name="Opponent" parent="." index="2"]
-opponent = ExtResource("2_0inwb")
+opponent_ressources = ExtResource("2_0inwb")

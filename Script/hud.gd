@@ -4,7 +4,11 @@ class_name  HUD
 signal slash_finished
 signal compte_a_rebour_finished
 
-@onready var animation : AnimationPlayer = $AnimationPlayer
+@onready var animation : AnimationPlayer = $Animation
+@onready var flash_blanc : AnimationPlayer = $Flash_blanc
+
+
+
 @onready var rectangle_blanc : TextureRect = $TextureRect
 @onready var decompte : Label = $Decompte
 @onready var health_display : GridContainer = $Health_display
@@ -44,6 +48,7 @@ func remove_heart() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "slash"):
+		print("animation flash fini")
 		slash_finished.emit()
 		rectangle_blanc.visible = false
 	if(anim_name == "compte a rebour"):
@@ -52,7 +57,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func animation_flash() -> void:
 	rectangle_blanc.visible = true
-	animation.play("slash")
+	print("animation flash commence")
+	flash_blanc.play("slash")
 
 func animation_compte_a_rebour() -> void:
 	decompte.visible = true
@@ -65,6 +71,8 @@ func show_winning_dual():
 func show_game_over():
 	match_display.visible = true
 	game_over_display.visible = true
+
+
 
 func _on_retry_button_up() -> void:
 	get_tree().reload_current_scene()

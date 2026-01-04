@@ -1,16 +1,22 @@
-[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=4 format=3 uid="uid://djmeu20vcvcjv"]
+[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=5 format=3 uid="uid://djmeu20vcvcjv"]
 
 [ext_resource type="Script" path="res://Script/OpponentPhase.gd" id="1_ffy4q"]
 [ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="1_mnrbq"]
 [ext_resource type="Texture2D" uid="uid://dwsqkqv3j15d3" path="res://icon.svg" id="2_fvm5s"]
+
+[sub_resource type="Resource" id="Resource_qwrre"]
+script = ExtResource("1_ffy4q")
+hit = 4
+feint = 0
 
 [resource]
 script = ExtResource("1_mnrbq")
 opponent_name = "lambda"
 sprite_feint = Array[Texture2D]([ExtResource("2_fvm5s")])
 sprite_main = ExtResource("2_fvm5s")
-phase = Array[ExtResource("1_ffy4q")]([])
+phase = Array[ExtResource("1_ffy4q")]([SubResource("Resource_qwrre")])
 number_hit_by_phase = Array[int]([4])
 nb_reaction_time = 1.0
 nb_delay = 1.0
 nb_time_remaining = 7.0
+nb_delay_feint = 0.2
