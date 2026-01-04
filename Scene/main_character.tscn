@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1g8yxp2j6lrb"]
+[gd_scene load_steps=10 format=3 uid="uid://b1g8yxp2j6lrb"]
 
 [ext_resource type="Script" path="res://Script/main_character.gd" id="1_gro7q"]
 [ext_resource type="Texture2D" uid="uid://de2fvot4t2xud" path="res://krita/main_character.png" id="2_ujbqj"]
+[ext_resource type="Texture2D" uid="uid://dqvlvbnc8g0cp" path="res://krita/Interrogation.png" id="3_cchfw"]
 [ext_resource type="AudioStream" uid="uid://dieoip5jid5wl" path="res://song/MC_slash.mp3" id="3_s4vgc"]
+[ext_resource type="Texture2D" uid="uid://ce7yhrsvgqh0v" path="res://krita/Avertissement.png" id="4_m7pj2"]
 
 [sub_resource type="Animation" id="Animation_33ojy"]
 length = 0.001
@@ -146,24 +148,25 @@ offset_right = 266.0
 offset_bottom = 42.0
 text = "MISSED"
 
-[node name="Not_sure" type="Label" parent="."]
+[node name="Not_sure" type="TextureRect" parent="."]
 visible = false
 offset_left = 109.0
 offset_top = -193.0
-offset_right = 149.0
-offset_bottom = -120.0
-theme_override_font_sizes/font_size = 53
-text = "?"
-horizontal_alignment = 1
+offset_right = 229.0
+offset_bottom = -73.0
+texture = ExtResource("3_cchfw")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="Sure" type="Label" parent="."]
+[node name="Sure" type="TextureRect" parent="."]
 visible = false
 offset_left = 110.0
 offset_top = -193.0
-offset_right = 154.0
-offset_bottom = -120.0
-theme_override_font_sizes/font_size = 53
-text = "!!!"
+offset_right = 230.0
+offset_bottom = -73.0
+texture = ExtResource("4_m7pj2")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="Slash_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_s4vgc")

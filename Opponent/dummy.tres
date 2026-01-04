@@ -10,5 +10,5 @@ sprite_feint = Array[Texture2D]([])
 sprite_main = ExtResource("2_m1pfr")
 number_hit_by_phase = Array[int]([1])
 nb_reaction_time = 2.0
-nb_delay = 5.0
+nb_delay = 1.0
 nb_time_remaining = 5.0

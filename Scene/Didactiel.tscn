@@ -1,3 +1,101 @@
-[gd_scene format=3 uid="uid://7fnbcp1u8q2u"]
+[gd_scene load_steps=4 format=3 uid="uid://7fnbcp1u8q2u"]
 
-[node name="Didactiel" type="Node2D"]
+[ext_resource type="Script" path="res://Script/didactiel.gd" id="1_hlhs1"]
+[ext_resource type="Texture2D" uid="uid://bdy1auo30lrlw" path="res://krita/background_title.png" id="2_qydij"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_o3l6p"]
+
+[node name="Didactiel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hlhs1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qydij")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+self_modulate = Color(0.760784, 0.760784, 0.760784, 0.811765)
+layout_mode = 2
+texture = SubResource("CanvasTexture_o3l6p")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Button" type="Button" parent="MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "return"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+z_index = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 106
+text = "How TO PLAY"
+
+[node name="Resume" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "ton objectif est de ne pas perir
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "si tu vois ce signe 
+cest adire quil faut faire right clic pour assener un coup"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "si jamais vous ne reagissez pas assez rapidement ou vous vous tromper ,vous perdez une vie , au bout de 3 vie epuiser , cest le game over
+<"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/TextureRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[connection signal="button_up" from="MarginContainer/TextureRect/MarginContainer/Button" to="." method="_on_button_button_up"]
