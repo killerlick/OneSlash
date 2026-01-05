@@ -31,6 +31,11 @@ func hide_sign( ) -> void :
 	not_sure.visible = false
 	sure.visible = false
 
+func play_not_sure() -> void :
+	show_sign("not_sure")
+	await get_tree().create_timer(0.05).timeout
+	hide_sign()
+
 func play_slash_sound():
 	slash_sound.set_pitch_scale(randf_range(0.99 , 1.05))
 	slash_sound.play()

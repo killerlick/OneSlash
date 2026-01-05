@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://nsy377c3n3a2"]
+[gd_scene load_steps=9 format=3 uid="uid://nsy377c3n3a2"]
 
 [ext_resource type="Script" path="res://Script/hud.gd" id="1_4dxal"]
 [ext_resource type="Texture2D" uid="uid://c6xv8oce53bte" path="res://krita/coeur.png" id="2_t04iy"]
@@ -43,6 +43,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Decompte:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(620, 106)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Display_round:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(54, 257)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Display_round:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_kfc65"]
 resource_name = "compte a rebour"
@@ -54,7 +90,7 @@ tracks/0/path = NodePath("Decompte:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2, 3),
+"times": PackedFloat32Array(0, 0.666667, 1.66667, 2.86667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": ["3", "2", "1", "Go"]
@@ -66,10 +102,22 @@ tracks/1/path = NodePath("Decompte:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3, 3.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.666667, 1, 1.2, 1.66667, 2, 2.2, 3, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 2, 1, 1, 1, 28.4746, 2.07052, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Decompte:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2, 2.33333, 2.4),
+"transitions": PackedFloat32Array(2, 1, 1, 2, 1, 1, 2, 1, 1),
+"update": 0,
+"values": [Vector2(620, 106), Vector2(620, 200), Vector2(620, 40), Vector2(620, 106), Vector2(620, 200), Vector2(620, 40), Vector2(620, 106), Vector2(620, 200), Vector2(620, 106)]
 }
 
 [sub_resource type="Animation" id="Animation_axmhn"]
@@ -88,10 +136,38 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_fhq43"]
+resource_name = "round_animation"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display_round:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.41422, 2.21913, 1),
+"update": 0,
+"values": [Vector2(54, 257), Vector2(507.5, 318), Vector2(961, 379)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Display_round:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.812254, 0.757859, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jwd5g"]
 _data = {
 "RESET": SubResource("Animation_bqqfh"),
 "compte a rebour": SubResource("Animation_kfc65"),
+"round_animation": SubResource("Animation_fhq43"),
 "slash": SubResource("Animation_axmhn")
 }
 
@@ -108,18 +184,26 @@ grow_vertical = 2
 texture = SubResource("CanvasTexture_noidn")
 
 [node name="Decompte" type="Label" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
 offset_top = 106.0
-offset_right = 20.0
-offset_bottom = 152.0
+offset_right = 47.0
+offset_bottom = 175.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 33
+theme_override_font_sizes/font_size = 50
 text = "2"
+horizontal_alignment = 1
+
+[node name="Display_round" type="Label" parent="."]
+offset_left = 54.0
+offset_top = 257.0
+offset_right = 393.0
+offset_bottom = 375.0
+theme_override_font_sizes/font_size = 86
+text = "ROUND "
 horizontal_alignment = 1
 
 [node name="Flash_blanc" type="AnimationPlayer" parent="."]

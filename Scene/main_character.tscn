@@ -142,10 +142,10 @@ libraries = {
 
 [node name="Missed" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
-offset_left = 258.0
-offset_top = -129.0
-offset_right = 316.0
-offset_bottom = -106.0
+offset_left = 208.0
+offset_top = 19.0
+offset_right = 266.0
+offset_bottom = 42.0
 text = "MISSED"
 
 [node name="Not_sure" type="TextureRect" parent="."]

@@ -37,12 +37,19 @@ func _input(event: InputEvent) -> void:
 			pass
 
 #commence le round
-func begin_the_round() -> void :
+func begin_the_round(new_round:bool) -> void :
 	print("le match commence dans 1 2 3 ...")
 	
-	match_start.set_wait_time(3.0)
-	hud.animation_compte_a_rebour()
-	match_start.start()
+
+	if new_round:
+		match_start.set_wait_time(4.0)
+		hud.animation_round(opponent.current_phase)
+		match_start.start()
+	else:
+		match_start.set_wait_time(3.0)
+		hud.animation_compte_a_rebour()
+		match_start.start()
+
 
 #si vous ne slasher au bon moment , donc echouer le round
 func handle_miss() -> void:
@@ -54,7 +61,7 @@ func handle_miss() -> void:
 		return
 	else:
 		hud.remove_heart()
-		begin_the_round()
+		begin_the_round(false)
 	opponent.restart_all()
 
 #Si vous slasher au bon moment
@@ -96,7 +103,7 @@ func _on_opponent_vanished() -> void:
 
 func _on_level_animation_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "level_begin"):
-		begin_the_round()
+		begin_the_round(false)
 
 func _on_opponent_prepare_next_phase() -> void:
-	begin_the_round()
+	begin_the_round(true)

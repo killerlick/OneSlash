@@ -7,10 +7,9 @@ signal compte_a_rebour_finished
 @onready var animation : AnimationPlayer = $Animation
 @onready var flash_blanc : AnimationPlayer = $Flash_blanc
 
-
-
 @onready var rectangle_blanc : TextureRect = $TextureRect
 @onready var decompte : Label = $Decompte
+@onready var display_round : Label = $Display_round
 @onready var health_display : GridContainer = $Health_display
 @onready var health_model = $Health_model
 
@@ -24,11 +23,12 @@ func _ready() -> void:
 	rectangle_blanc.visible = false
 	decompte.visible = false
 	health_model.visible = false
+	display_round.visible = false
 	
 	match_display.visible = false
 	game_over_display.visible = false
 	game_win_display.visible = false
-
+	
 	display_health()
 
 
@@ -51,9 +51,14 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		print("animation flash fini")
 		slash_finished.emit()
 		rectangle_blanc.visible = false
+		
 	if(anim_name == "compte a rebour"):
 		compte_a_rebour_finished.emit()
 		decompte.visible = false
+		
+	if(anim_name == "round_animation" ):
+		animation_compte_a_rebour()
+		display_round.visible = false
 
 func animation_flash() -> void:
 	rectangle_blanc.visible = true
@@ -63,6 +68,11 @@ func animation_flash() -> void:
 func animation_compte_a_rebour() -> void:
 	decompte.visible = true
 	animation.play("compte a rebour")
+
+func animation_round(round_number : int) -> void:
+	display_round.visible = true
+	display_round.set_text("ROUND " +  str(round_number))
+	animation.play("round_animation")
 
 func show_winning_dual():
 	match_display.visible = true
