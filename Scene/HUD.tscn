@@ -120,22 +120,6 @@ tracks/2/keys = {
 "values": [Vector2(620, 106), Vector2(620, 200), Vector2(620, 40), Vector2(620, 106), Vector2(620, 200), Vector2(620, 40), Vector2(620, 106), Vector2(620, 200), Vector2(620, 106)]
 }
 
-[sub_resource type="Animation" id="Animation_axmhn"]
-resource_name = "slash"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_fhq43"]
 resource_name = "round_animation"
 tracks/0/type = "value"
@@ -161,6 +145,22 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(0.812254, 0.757859, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_axmhn"]
+resource_name = "slash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jwd5g"]
@@ -272,7 +272,6 @@ layout_mode = 2
 text = " QUIT "
 
 [node name="Game_win_display" type="VBoxContainer" parent="Match_display"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
@@ -300,7 +299,7 @@ text = " QUIT "
 
 [connection signal="animation_finished" from="Flash_blanc" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_player_animation_finished"]
-[connection signal="button_up" from="Match_display/Game_over_display/HBoxContainer/Retry" to="." method="_on_retry_button_up"]
+[connection signal="pressed" from="Match_display/Game_over_display/HBoxContainer/Retry" to="." method="_on_retry_pressed"]
 [connection signal="button_up" from="Match_display/Game_over_display/HBoxContainer/Main_menu" to="." method="_on_main_menu_button_up"]
-[connection signal="button_up" from="Match_display/Game_win_display/HBoxContainer/Next" to="." method="_on_next_button_up"]
-[connection signal="button_up" from="Match_display/Game_win_display/HBoxContainer/Main_menu" to="." method="_on_main_menu_button_up"]
+[connection signal="pressed" from="Match_display/Game_win_display/HBoxContainer/Next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Match_display/Game_win_display/HBoxContainer/Main_menu" to="." method="_on_main_menu_pressed"]

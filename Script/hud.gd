@@ -83,12 +83,11 @@ func show_game_over():
 	game_over_display.visible = true
 
 
+func _on_next_pressed() -> void:
+	Global.go_next_level() 
 
-func _on_retry_button_up() -> void:
-	get_tree().reload_current_scene()
-
-func _on_main_menu_button_up() -> void:
+func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/main_menu.tscn") # Replace with function body.
 
-func _on_next_button_up() -> void:
-	Global.go_next_level() # Replace with function body.
+func _on_retry_pressed() -> void:
+	get_tree().reload_current_scene()

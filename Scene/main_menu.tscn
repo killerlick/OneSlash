@@ -124,6 +124,13 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 121
 text = "PLAY"
 
+[node name="Infinite_mode" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 33
+disabled = true
+text = " INFINITE MODE "
+
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
