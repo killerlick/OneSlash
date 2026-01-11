@@ -124,6 +124,13 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 121
 text = "PLAY"
 
+[node name="Play2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 201
+text = "PLAY"
+
 [node name="Infinite_mode" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -149,4 +156,5 @@ volume_db = -3.402
 autoplay = true
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play2" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_up"]
