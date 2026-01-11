@@ -21,6 +21,7 @@ jobs:
           archive_output: true
         env:
           GITHUB_TOKEN: ${{secrets.GH_KEY}}
+          
       - name: Publish to Itch
         uses: Ayowel/butler-to-itch@v1.2.0
         with:
