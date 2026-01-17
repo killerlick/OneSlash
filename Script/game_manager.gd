@@ -74,6 +74,7 @@ func handle_success() -> void:
 
 #condition et fonction de victoire
 func win_game():
+	print("fini")
 	hud.show_winning_dual()
 
 #situation game over
@@ -93,8 +94,8 @@ func _on_opponent_will_attack() -> void:
 	main_character.show_sign("sure")
 
 func _on_match_start_timeout() -> void:
-	print("le match commence")
-	opponent.ennemy_start_next_attack()
+	#print("le match commence")
+	opponent.ennemy_start_next_action()
 	dual_begin = true
 
 func _on_opponent_vanished() -> void:
@@ -107,3 +108,7 @@ func _on_level_animation_animation_finished(anim_name: StringName) -> void:
 
 func _on_opponent_prepare_next_phase() -> void:
 	begin_the_round(true)
+
+
+func _on_opponent_feint() -> void:
+	main_character.play_not_sure()

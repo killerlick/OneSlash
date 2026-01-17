@@ -48,7 +48,6 @@ func remove_heart() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if(anim_name == "slash"):
-		print("animation flash fini")
 		slash_finished.emit()
 		rectangle_blanc.visible = false
 		
@@ -62,7 +61,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func animation_flash() -> void:
 	rectangle_blanc.visible = true
-	print("animation flash commence")
 	flash_blanc.play("slash")
 
 func animation_compte_a_rebour() -> void:

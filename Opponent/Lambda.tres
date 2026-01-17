@@ -6,8 +6,8 @@
 
 [sub_resource type="Resource" id="Resource_qwrre"]
 script = ExtResource("1_ffy4q")
-hit = 4
-feint = 0
+hit = 0
+feint = 2
 
 [resource]
 script = ExtResource("1_mnrbq")
@@ -15,7 +15,7 @@ opponent_name = "lambda"
 sprite_feint = Array[Texture2D]([ExtResource("2_fvm5s")])
 sprite_main = ExtResource("2_fvm5s")
 phase = Array[ExtResource("1_ffy4q")]([SubResource("Resource_qwrre")])
-number_hit_by_phase = Array[int]([4])
+number_hit_by_phase = Array[int]([])
 nb_reaction_time = 1.0
 nb_delay = 1.0
 nb_time_remaining = 7.0

@@ -41,7 +41,9 @@ func get_number_hit(phase_number : int) -> int:
 
 func get_number_feint(phase_number : int) -> int:
 	return phase[phase_number].feint
-	
+
+func get_all_hit_number(phase_number : int) -> int:
+	return phase[phase_number].feint + phase[phase_number].hit
 
 func get_number_phase()-> int :
 	return phase.size()

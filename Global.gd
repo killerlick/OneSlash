@@ -12,6 +12,10 @@ var current_chance = 3
 var current_level := 1
 var MAX_LEVEL := 3
 
+func _ready() -> void:
+	print("script global")
+	pass
+
 func go_next_level():
 	if current_level < MAX_LEVEL:
 		current_level += 1
