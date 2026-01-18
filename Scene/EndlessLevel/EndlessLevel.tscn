@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr0163qu5fmpl"]
+
+[ext_resource type="PackedScene" uid="uid://ywi4ia4sv7fv" path="res://Scene/Levels/Base_level_kit.tscn" id="1_31l1m"]
+[ext_resource type="Script" path="res://Script/opponent_endless.gd" id="2_30eww"]
+[ext_resource type="Resource" uid="uid://dgqp6ki0ya7n8" path="res://Opponent/bigmcRaga.tres" id="3_fjfy8"]
+
+[node name="BaseLevelKit" instance=ExtResource("1_31l1m")]
+
+[node name="Opponent" parent="." index="2"]
+script = ExtResource("2_30eww")
+current_level = 1
+opponent_ressources = ExtResource("3_fjfy8")

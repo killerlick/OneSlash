@@ -25,8 +25,6 @@ var state : Global.Opponent_state ;
 var current_phase : int = 1
 var phase_lenght : int
 
-#var hit_timer : Array[float] = []
-
 var action_timer_key : Array[float]
 var action_timer : Dictionary = {}
 
@@ -41,16 +39,6 @@ func _ready() -> void:
 	reaction_time.set_wait_time(opponent_ressources.nb_reaction_time) 
 	set_time_attack()
 
-#fonction qui set action_timer(array timer d'attack)
-#func set_time_attack() -> void:
-	#hit_timer.clear()
-	#for i in range(opponent_ressources.get_number_hit(current_phase -1)):
-		#var randomGenerator = RandomNumberGenerator.new()
-		#var action_time = randomGenerator.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
-		#hit_timer.push_back(action_time)
-	#sort_list()
-	#print(hit_timer)
-
 func set_time_attack() -> void:
 	action_timer.clear()
 	var hit_number : int  = opponent_ressources.get_number_hit(current_phase-1)
@@ -64,7 +52,6 @@ func set_time_attack() -> void:
 			hit_number -= 1
 		else:
 			action_timer[action_time] = "feint"
-
 	sort_list()
 
 #transforme hit_timer pour mieux arranger les timer
@@ -81,7 +68,6 @@ func sort_list() -> void:
 			result.append(hit_timer[i])
 		else:
 			result.append(hit_timer[i] - hit_timer[i - 1])
-	
 	hit_timer = result
 	action_timer.clear()
 	

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Opponent_ressources" load_steps=4 format=3 uid="uid://dgqp6ki0ya7n8"]
+
+[ext_resource type="Script" path="res://Script/OpponentPhase.gd" id="1_rtauh"]
+[ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="2_fg7gd"]
+[ext_resource type="Texture2D" uid="uid://dwsqkqv3j15d3" path="res://icon.svg" id="3_w7awa"]
+
+[resource]
+script = ExtResource("2_fg7gd")
+opponent_name = "bigmacRaga"
+sprite_feint = Array[Texture2D]([])
+sprite_main = ExtResource("3_w7awa")
+phase = Array[ExtResource("1_rtauh")]([])
+number_hit_by_phase = Array[int]([])
+nb_reaction_time = 2.0
+nb_delay = 1.0
+nb_time_remaining = 7.0
+nb_delay_feint = 0.2
