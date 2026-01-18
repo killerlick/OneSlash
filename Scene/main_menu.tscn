@@ -128,7 +128,6 @@ text = "PLAY"
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 33
-disabled = true
 text = " INFINITE MODE "
 
 [node name="Exit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
@@ -149,4 +148,5 @@ volume_db = -3.402
 autoplay = true
 
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_button_up"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Infinite_mode" to="." method="_on_infinite_mode_pressed"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_up"]
