@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://Script/OpponentPhase.gd" id="1_rtauh"]
 [ext_resource type="Script" path="res://Script/opponent_ressources.gd" id="2_fg7gd"]
-[ext_resource type="Texture2D" uid="uid://dwsqkqv3j15d3" path="res://icon.svg" id="3_w7awa"]
+[ext_resource type="Texture2D" uid="uid://mrd1hrs61hgw" path="res://krita/bgmacrag.png" id="3_iknv1"]
 
 [resource]
 script = ExtResource("2_fg7gd")
 opponent_name = "bigmacRaga"
 sprite_feint = Array[Texture2D]([])
-sprite_main = ExtResource("3_w7awa")
+sprite_main = ExtResource("3_iknv1")
 phase = Array[ExtResource("1_rtauh")]([])
 number_hit_by_phase = Array[int]([])
 nb_reaction_time = 2.0
