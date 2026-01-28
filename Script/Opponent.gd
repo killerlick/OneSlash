@@ -172,6 +172,6 @@ func _on_timer_for_feinting_timeout() -> void:
 	feint.emit() 
 
 func _on_timer_after_feint_timeout() -> void:
-	sprite.set_flip_h(true)
+	sprite.set_flip_h(false)
 	hitted()
 	pass # Replace with function body.
