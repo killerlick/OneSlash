@@ -38,6 +38,10 @@ func _ready() -> void:
 	if(opponent_ressources.sprite_main != null):
 		sprite.texture = opponent_ressources.sprite_main
 		phase_lenght = opponent_ressources.get_number_phase()
+	print("PHASE AU START:", current_phase)
+	print("HITS:", opponent_ressources.get_number_hit(0))
+	print("FEINTS:", opponent_ressources.get_number_feint(0))
+
 	state = Global.Opponent_state.NOT_READY
 	reaction_time.set_wait_time(opponent_ressources.nb_reaction_time) 
 	set_time_attack()
@@ -73,6 +77,7 @@ func sort_list() -> void:
 	)
 	for i in range (action_queue.size() - 1,0, -1):
 		action_queue[i].time -= action_queue[i - 1].time
+	print(action_queue)
 
 #fonction qui set la prochaine attack de hit_timer(prochaine du monstre selon la liste)
 func ennemy_start_next_action():

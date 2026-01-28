@@ -150,3 +150,4 @@ autoplay = true
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_button_up"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Infinite_mode" to="." method="_on_infinite_mode_pressed"]
 [connection signal="button_up" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer/Didactiel" to="." method="_on_didactiel_pressed"]
