@@ -43,15 +43,15 @@ func _ready() -> void:
 	set_time_attack()
 
 func set_time_attack() -> void:
-	action_queue.clear()
 	
+	action_queue.clear()
 	var hit_number : int  = opponent_ressources.get_number_hit(current_phase-1)
 	var feint_number : int = opponent_ressources.get_number_feint(current_phase - 1)
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	
 	for i in range(hit_number + feint_number):
-		
-		var randomGenerator = RandomNumberGenerator.new()
-		var action_time = randomGenerator.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
+		var action_time = rng.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
 		var action_type="hit" 
 		if(hit_number > 0):
 			hit_number -= 1

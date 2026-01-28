@@ -31,10 +31,12 @@ func set_time_attack() -> void:
 	var hit_number : int  = endless_hit_number
 	var feint_number : int = endless_feint_number
 	
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	
 	for i in range(hit_number + feint_number):
 		
-		var randomGenerator = RandomNumberGenerator.new()
-		var action_time = randomGenerator.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
+		var action_time = rng.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
 		var action_type="hit" 
 		if(hit_number > 0):
 			hit_number -= 1
