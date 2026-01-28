@@ -38,7 +38,7 @@ func _ready() -> void:
 	if(opponent_ressources.sprite_main != null):
 		sprite.texture = opponent_ressources.sprite_main
 		phase_lenght = opponent_ressources.get_number_phase()
-	print("PHASE AU START:", current_phase)
+	print("PHASE AU START: ", current_phase)
 	print("HITS:", opponent_ressources.get_number_hit(0))
 	print("FEINTS:", opponent_ressources.get_number_feint(0))
 
