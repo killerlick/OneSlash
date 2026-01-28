@@ -21,3 +21,7 @@ func _on_play_button_up() -> void:
 
 func _on_infinite_mode_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scene/EndlessLevel/EndlessLevel.tscn") # Replace with function body.
+
+
+func _on_didactiel_pressed() -> void:
+	get_tree().change_scene_to_file("res://Scene/Didactiel.tscn") # Replace with function body.

@@ -27,18 +27,25 @@ func _ready() -> void:
 
 func set_time_attack() -> void:
 	set_round()
-	action_timer.clear()
+	action_queue.clear()
 	var hit_number : int  = endless_hit_number
 	var feint_number : int = endless_feint_number
 	
 	for i in range(hit_number + feint_number):
+		
 		var randomGenerator = RandomNumberGenerator.new()
-		var action_time = randomGenerator.randf()*nb_time_remaining + opponent_ressources.nb_delay
+		var action_time = randomGenerator.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
+		var action_type="hit" 
 		if(hit_number > 0):
-			action_timer[action_time] = "hit"
 			hit_number -= 1
 		else:
-			action_timer[action_time] = "feint"
+			action_type = "feint"
+		action_queue.append(
+		{
+			"time" : action_time,
+			"type" : action_type
+		}
+	)
 	sort_list()
 
 
@@ -52,7 +59,7 @@ func hitted()-> void:
 	show_timing(reaction_time.time_left)
 	reaction_time.stop()
 	reaction_time.set_wait_time(nb_reaction_time)
-	if(action_timer.size() <= 0 ):
+	if(action_queue.size() <= 0 ):
 		if current_phase >= phase_lenght:
 			vanished.emit()
 		else:

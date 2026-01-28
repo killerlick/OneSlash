@@ -28,7 +28,8 @@ var current_phase : int = 1
 var phase_lenght : int
 
 var action_timer_key : Array[float]
-var action_timer : Dictionary = {}
+
+var action_queue : Array = []
 
 func _ready() -> void:
 	if(opponent_ressources == null):
@@ -42,48 +43,45 @@ func _ready() -> void:
 	set_time_attack()
 
 func set_time_attack() -> void:
-	action_timer.clear()
+	action_queue.clear()
+	
 	var hit_number : int  = opponent_ressources.get_number_hit(current_phase-1)
 	var feint_number : int = opponent_ressources.get_number_feint(current_phase - 1)
 	
-	for i in range(opponent_ressources.get_all_hit_number(current_phase -1)):
+	for i in range(hit_number + feint_number):
+		
 		var randomGenerator = RandomNumberGenerator.new()
 		var action_time = randomGenerator.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
+		var action_type="hit" 
 		if(hit_number > 0):
-			action_timer[action_time] = "hit"
 			hit_number -= 1
 		else:
-			action_timer[action_time] = "feint"
+			action_type = "feint"
+		action_queue.append(
+		{
+			"time" : action_time,
+			"type" : action_type
+		}
+	)
 	sort_list()
 
 #transforme hit_timer pour mieux arranger les timer
 func sort_list() -> void:
-	
-	var hit_timer : Array = action_timer.keys()
-	hit_timer.sort()
-	var hit_type : Array = action_timer.values() 
-	hit_type.shuffle()
-	var result: Array[float] = []
-	
-	for i in range(action_timer.size()):
-		if i == 0:
-			result.append(hit_timer[i])
-		else:
-			result.append(hit_timer[i] - hit_timer[i - 1])
-	hit_timer = result
-	action_timer.clear()
-	
-	for i in range(hit_timer.size()):
-		action_timer[hit_timer[i]] = hit_type[i]
+	action_queue.sort_custom(
+		func(a,b):
+			return a.time < b.time
+	)
+	for i in range (action_queue.size() - 1,0, -1):
+		action_queue[i].time -= action_queue[i - 1].time
 
 #fonction qui set la prochaine attack de hit_timer(prochaine du monstre selon la liste)
 func ennemy_start_next_action():
-	var next_action = pop_front_dictionary(action_timer)
+	var next_action = action_queue.pop_front()
 	
-	if(next_action[VALUE] == "hit"):
-		timer_for_attacking.set_wait_time(next_action[KEY])
+	if(next_action.type == "hit"):
+		timer_for_attacking.set_wait_time(next_action.time)
 		timer_for_attacking.start()
-	elif (next_action[VALUE] == "feint"):
+	elif (next_action.type == "feint"):
 		timer_for_feinting.set_wait_time(0.5)
 		timer_for_feinting.start()
 		
@@ -94,7 +92,7 @@ func hitted()-> void:
 	show_timing(reaction_time.time_left)
 	reaction_time.stop()
 	reaction_time.set_wait_time(opponent_ressources.nb_reaction_time)
-	if(action_timer.size() <= 0 ):
+	if(action_queue.size() <= 0 ):
 		if current_phase >= phase_lenght:
 			vanished.emit()
 		else:

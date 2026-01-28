@@ -18,5 +18,5 @@ phase = Array[ExtResource("1_prkt7")]([SubResource("Resource_qs547")])
 number_hit_by_phase = Array[int]([6])
 nb_reaction_time = 1.0
 nb_delay = 1.0
-nb_time_remaining = 7.0
+nb_time_remaining = 4.0
 nb_delay_feint = 0.2
