@@ -19,6 +19,8 @@ var state : Global.Opponent_state ;
 @onready var timer_for_feinting : Timer = $Timer_for_feinting
 @onready var timer_after_feint : Timer = $Timer_after_feint
 
+@onready var timing :Label =  $Timing
+
 @onready var reaction_time     : Timer = $Reaction_time
 @onready var sprite : Sprite2D = $Sprite2D
 
@@ -87,9 +89,9 @@ func ennemy_start_next_action():
 		
 	state = Global.Opponent_state.PREPARING
 
-
 #se lance quand oppoenent se fait hit
 func hitted()-> void:
+	show_timing(reaction_time.time_left)
 	reaction_time.stop()
 	reaction_time.set_wait_time(opponent_ressources.nb_reaction_time)
 	if(action_timer.size() <= 0 ):
@@ -103,6 +105,27 @@ func hitted()-> void:
 		state = Global.Opponent_state.PREPARING
 		await get_tree().create_timer(0.1).timeout
 		ennemy_start_next_action()
+
+func show_timing(time : float ) -> void :
+	var max_time = opponent_ressources.nb_reaction_time
+	var timing_time_remaining = max_time-time
+	
+	var ratio = timing_time_remaining / max_time
+	var result = ""
+	print(str(ratio) +"    "+ str(max_time))
+	
+	if ratio >= 0.8:
+		result = "OK"
+	elif ratio >= 0.4:
+		result = "GOOD"
+	else:
+		result = "PERFECT"
+	timing.set_text(result)
+	timing.set_visible(true)
+	await get_tree().create_timer(0.3).timeout
+	timing.set_visible(false)
+
+
 
 
 func pop_front_dictionary(dic : Dictionary) -> Array :
@@ -141,15 +164,14 @@ func _on_reaction_time_timeout() -> void:
 	print("il a attaqué")
 	attacking.emit()
 
-
 func _on_timer_for_feinting_timeout() -> void:
+	sprite.set_flip_h(true)
 	print("il va feinté")
 	timer_after_feint.set_wait_time(0.5)
 	timer_after_feint.start()
 	feint.emit() 
 
-
 func _on_timer_after_feint_timeout() -> void:
-	print("1")
+	sprite.set_flip_h(true)
 	hitted()
 	pass # Replace with function body.

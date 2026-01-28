@@ -6,9 +6,11 @@ var LEVEL_MAX : int     = 50
 
 #duree dans laquel lennemi (tout les attaque se font dans ce lapse de temps)
 var nb_time_remaining = 5.0
+var DEFAULT_NB_TIME_REMAINING = 5.0
 
-#temps avant que bigmcraga
+#temps avant que bigmcraga attaque
 var nb_reaction_time = 1.0 #0.150 MINIMUM
+var DEFAULT_NB_REACTION_TIME = 1.0
 
 
 var endless_hit_number : int
@@ -20,7 +22,7 @@ func _ready() -> void:
 		sprite.texture = opponent_ressources.sprite_main
 	phase_lenght = LEVEL_MAX
 	state = Global.Opponent_state.NOT_READY
-	reaction_time.set_wait_time(opponent_ressources.nb_reaction_time) 
+	reaction_time.set_wait_time(nb_time_remaining) 
 	set_time_attack()
 
 func set_time_attack() -> void:
@@ -31,7 +33,7 @@ func set_time_attack() -> void:
 	
 	for i in range(hit_number + feint_number):
 		var randomGenerator = RandomNumberGenerator.new()
-		var action_time = randomGenerator.randf()*opponent_ressources.nb_time_remaining + opponent_ressources.nb_delay
+		var action_time = randomGenerator.randf()*nb_time_remaining + opponent_ressources.nb_delay
 		if(hit_number > 0):
 			action_timer[action_time] = "hit"
 			hit_number -= 1
@@ -47,8 +49,9 @@ func set_round () -> void :
 
 
 func hitted()-> void:
+	show_timing(reaction_time.time_left)
 	reaction_time.stop()
-	reaction_time.set_wait_time(opponent_ressources.nb_reaction_time)
+	reaction_time.set_wait_time(nb_reaction_time)
 	if(action_timer.size() <= 0 ):
 		if current_phase >= phase_lenght:
 			vanished.emit()
@@ -61,6 +64,28 @@ func hitted()-> void:
 		await get_tree().create_timer(0.1).timeout
 		ennemy_start_next_action()
 
+func show_timing(time : float ) -> void :
+	var max_time = nb_reaction_time
+	var timing_time_remaining = max_time-time
+	
+	if timing_time_remaining<0:
+		timing_time_remaining=0
+	
+	var ratio = timing_time_remaining / max_time
+	var result = ""
+	
+	if ratio >= 0.8:
+		result = "OK"
+	elif ratio >= 0.4:
+		result = "GOOD"
+	else:
+		result = "PERFECT"
+	timing.set_text(result)
+	timing.set_visible(true)
+	await get_tree().create_timer(0.3).timeout
+	timing.set_visible(false)
+
+
 func calculate_dificulty(level : int) ->   float :
 	return clamp( level/5 , 0 ,10)
 
@@ -68,9 +93,9 @@ func prepare_phase() -> void :
 	pass
 
 func set_enemy_action() -> void :
-	nb_time_remaining = nb_time_remaining - calculate_dificulty(current_level)*0.2
-	nb_reaction_time = nb_reaction_time + (endless_feint_number+endless_hit_number)*0.3
-	nb_reaction_time = nb_reaction_time - calculate_dificulty(current_level)*0.085
+	nb_reaction_time = DEFAULT_NB_REACTION_TIME - calculate_dificulty(current_level)*0.085
+	nb_time_remaining = DEFAULT_NB_TIME_REMAINING + (endless_feint_number+endless_hit_number)*0.3- calculate_dificulty(current_level)*0.2
+
 
 func dificulty_selection(level : int)   ->  void :
 	match int(level) :

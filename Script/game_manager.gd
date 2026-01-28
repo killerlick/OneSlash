@@ -109,6 +109,5 @@ func _on_level_animation_animation_finished(anim_name: StringName) -> void:
 func _on_opponent_prepare_next_phase() -> void:
 	begin_the_round(true)
 
-
 func _on_opponent_feint() -> void:
 	main_character.play_not_sure()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://fial675cu8gf"]
+[gd_scene load_steps=3 format=3 uid="uid://fial675cu8gf"]
 
 [ext_resource type="Script" path="res://Script/opponent.gd" id="1_k3ai7"]
+[ext_resource type="Texture2D" uid="uid://cf4y0uc34l43h" path="res://krita/boxeur.png" id="2_epulj"]
 
 [node name="Opponent" type="Node2D"]
 script = ExtResource("1_k3ai7")
@@ -20,8 +21,17 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_epulj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Timing" type="Label" parent="."]
+visible = false
+offset_left = 52.0
+offset_top = -108.0
+offset_right = 99.0
+offset_bottom = -82.0
+text = "PERFECT"
 
 [connection signal="timeout" from="Timer_for_attacking" to="." method="_on_timer_for_attacking_timeout"]
 [connection signal="timeout" from="Timer_for_feinting" to="." method="_on_timer_for_feinting_timeout"]
